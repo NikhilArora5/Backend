@@ -6,9 +6,20 @@ app.use(cors())
 const connectDB=require("./config/database")
 const PORT=8081
 require('dotenv').config();
-
-
 connectDB()
+
+
+
+// for req,body
+app.use(express.json());
+// for req.body url-form-encoded
+app.use(express.urlencoded({ extended: true }));
+
+const userRouter=require("./modules/users/routes/index")
+
+
+app.use("/",userRouter)
+
 app.listen(PORT,(err)=>{
     if(err){
         console.log("server error")
@@ -17,10 +28,5 @@ app.listen(PORT,(err)=>{
         console.log(`server runn successully on http://localhost:${PORT}/`)
     }
 })
-
-app.get("/",(req,res)=>{
-    res.send("hey there")
-})
-
 
 console.log("File running")
