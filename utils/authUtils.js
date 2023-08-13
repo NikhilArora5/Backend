@@ -11,9 +11,6 @@ const jwt=require("jsonwebtoken")
 }
 
 
-
-
-
 exports.genToken=async(id)=>{
     let token=await jwt.sign({id},process.env.JWT_SECRET,{
         expiresIn:"120s"
@@ -22,3 +19,13 @@ exports.genToken=async(id)=>{
     return token
 
 }
+
+
+
+exports.ComparePasswordFunc = async (password = "", encyptedPassword = "") => {
+    return await bcrypt.compare(password, encyptedPassword);
+  };
+  
+  exports.RandomPasswordFunc = () => {
+    return require("crypto").randomBytes(5).toString("hex");
+  };

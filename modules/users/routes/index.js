@@ -2,10 +2,12 @@ const express=require("express")
 
 const router=express.Router()
 
-const {register}=require("../controllers/userAuth")
+const {register,login}=require("../controllers/userAuth")
 
 
 router.post("/register", register
+)
+router.post("/login", login
 )
 
 
