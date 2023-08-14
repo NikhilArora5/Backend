@@ -13,7 +13,7 @@ const jwt=require("jsonwebtoken")
 
 exports.genToken=async(id)=>{
     let token=await jwt.sign({id},process.env.JWT_SECRET,{
-        expiresIn:"120s"
+        expiresIn:"1d"
     })
 
     return token

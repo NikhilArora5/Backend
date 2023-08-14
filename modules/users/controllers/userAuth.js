@@ -39,18 +39,37 @@ const register=async(req,res)=>{
         password:(savedPass)
     })
 
-    let token=await genToken(userSaved._id)
+    // let token=await genToken(userSaved._id)
 
     if(userSaved && token){
         console.log("user saved")
         return res.status(200).json({
             status:200,
             message:"user created succesfully",
-            data:userSaved
+            data:{}
         })
 
     }
     } catch (error) {
+        return res.status(400).json({
+            status:400,
+            message:error.message,
+            data:userSaved
+        })
+    }
+
+}
+const getData=async(req,res)=>{
+    try {
+   console.log("-------------req.user",req.userLogged)
+
+   return res.status(200).json({
+    status:200,
+    message:"error.message,",
+    data:req.userLogged
+})
+    }
+     catch (error) {
         return res.status(400).json({
             status:400,
             message:error.message,
@@ -92,7 +111,7 @@ const login=async(req,res)=>{
     if(!userExist){
         return res.status(401).json({
             status:401,
-            message:'user does not exist',
+            message:'invalid credentials',
             data:{}
         })
 
@@ -144,5 +163,5 @@ const login=async(req,res)=>{
 
 
 module.exports={
-    register,login
+    register,login,getData
 }
