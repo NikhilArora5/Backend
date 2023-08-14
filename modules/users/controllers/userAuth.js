@@ -127,10 +127,10 @@ const login=async(req,res)=>{
 
     if(isPassTrue){
 
-        return res.status(200).json({
+        return res.cookie("token",token,{ httpOnly: true}).status(200).json({
             status:200,
             message:'login succesfull',
-            data:{...userExist,token}
+            data:userExist
         })
 
     }else{
@@ -159,9 +159,16 @@ const login=async(req,res)=>{
 
 
 
+const logout=async(req,res)=>{
 
+    res.clearCookie("token")
+    .status(200).json({
+        message:"user logout successful",
+        data:{}
+    })
+}
 
 
 module.exports={
-    register,login,getData
+    register,login,getData,logout
 }

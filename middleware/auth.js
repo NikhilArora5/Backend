@@ -3,10 +3,11 @@ const user=require("../model/user")
 const verifyUser=async(req,res,next)=>{
 
     try {
-        let token=req.headers.token
+        let token=req.cookies.token||req.headers.token
+        // console.log("-------------req.cookies",req.cookies)
         let decoded=jwt.verify(token,process.env.JWT_SECRET)
 
-    // console.log("--------------decode",decoded)
+    
     
     let userLogged=await user.findOne({_id:decoded.id},{password:0})
      req.userLogged=userLogged
