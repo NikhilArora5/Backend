@@ -1,4 +1,5 @@
 const express=require("express")
+const fileUpload = require("express-fileupload");
 const app=express()
 
 const cors=require("cors")
@@ -9,7 +10,13 @@ const PORT=8081
 require('dotenv').config();
 connectDB()
 
-
+app.use(
+    fileUpload({
+      useTempFiles: true,
+      tempFileDir: "/tmp/",
+      createParentPath: true,
+    })
+  );
 
 // for req,body
 app.use(express.json());

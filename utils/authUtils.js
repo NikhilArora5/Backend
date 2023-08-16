@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken")
  exports.hashPassword=async(password)=>{
 
     const genSalt=await bcrypt.genSalt(Number(process.env.BCRYPT_SALT)||10)
-// /aa
+
     const hash=await bcrypt.hash(password,genSalt)
     console.log("hash gen",hash)
     return hash
