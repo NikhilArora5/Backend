@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // for cookies
 app.use(cookieParser());
 
-const userRouter=require("./modules/users/index")
+const userRouter=require("./src/modules/users/index")
 
 
 app.use("/",userRouter)
@@ -36,8 +36,6 @@ app.listen(PORT,(err)=>{
         console.log("server error")
     }else{
 
-        console.log(`server runn successully on http://localhost:${PORT}/`)
+        console.log(`Server Running  ✔️   on http://localhost:${PORT}/`)
     }
 })
-
-console.log("File running")
