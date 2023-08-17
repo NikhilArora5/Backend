@@ -5,6 +5,7 @@
 const {hashPassword,genToken,ComparePasswordFunc}=require("../../../utils/authUtils")
 const user=require("../../../model/user")
 const path = require('path')
+const {uploadPath2}=require("../../../uploads/path")
 let p=path.dirname("../../../uploads/")
 
 const register=async(req,res)=>{
@@ -171,14 +172,18 @@ const logout=async(req,res)=>{
 
 const upload=async(req,res)=>{
     // console.log(req.files);
-console.log("p",p)
+// console.log("p",p)
 let sampleFile;
   let uploadPath;
+  console.log("-----------BODY",req.body)
+  console.log("--------NAME________",req.body.name)
   
 sampleFile = req.files.sampleFile;
-const path = __dirname + "/uploads/" + sampleFile.name
+// const path = __dirname + "/uploads/" + sampleFile.name
+const path = uploadPath2 + "/users/" + sampleFile.name
   uploadPath = path 
 console.log("---------------upload",path )
+// console.log("--------impot-----uploadPath",uploadPath2)
 sampleFile.mv(uploadPath, function(err) {
     if (err)
       return res.status(500).send(err);
