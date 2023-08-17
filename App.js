@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // for cookies
 app.use(cookieParser());
 
-const userRouter=require("./modules/users/routes/index")
+const userRouter=require("./modules/users/index")
 
 
 app.use("/",userRouter)

@@ -1,8 +1,8 @@
 const express=require("express")
-const {verifyUser}=require("../../../middleware/auth")
+const {verifyUser}=require("../../middleware/auth")
 const router=express.Router()
 
-const {register,login, getData,logout,upload}=require("../controllers/userAuth")
+const {register,login, getData,logout,upload}=require("../users/controllers/userAuth")
 
 
 router.post("/register", register
