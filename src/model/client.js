@@ -1,4 +1,5 @@
 const mongoose=require("mongoose")
+const Schema=mongoose.Schema
 
 const client=mongoose.Schema({
 
@@ -20,7 +21,15 @@ const client=mongoose.Schema({
     about:{
         type:String,
         // required:true
+    },
+    stores:[
+       {
+         storeId:{
+            type:Schema.Types.ObjectId,
+            ref:"store"
+        }
     }
+    ]
 },{
 
     timestamps:true
