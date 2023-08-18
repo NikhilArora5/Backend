@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-
+const Schema=mongoose.Schema
 const store=mongoose.Schema({
 
 
@@ -14,14 +14,11 @@ const store=mongoose.Schema({
         unique:false
     },
    
-    about:{
-        type:String,
-        // required:true
-    },
-
-    clientId:{
-
-    },
+   
+    clientId: {
+        type: Schema.Types.ObjectId,
+        ref: "client",
+      },
     address:{
         type:String,
         required:true,
@@ -29,12 +26,14 @@ const store=mongoose.Schema({
     },
     pincode:{
         type:String,
-        required:true,
+        // required:true,
+        default:""
 
     },
     about:{
         type:String,
         // required:true,
+        default:""
 
     },
 

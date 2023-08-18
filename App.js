@@ -27,9 +27,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const userRouter=require("./src/modules/users/index")
+const clientRouter=require("./src/modules/client/index")
+const storeRouter=require("./src/modules/store/index")
 
 
-app.use("/",userRouter)
+app.use("/user/",userRouter)
+app.use("/client/",clientRouter)
+app.use("/store/",storeRouter)
 
 app.listen(PORT,(err)=>{
     if(err){
