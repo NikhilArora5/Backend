@@ -26,6 +26,6 @@ exports.ComparePasswordFunc = async (password = "", encyptedPassword = "") => {
     return await bcrypt.compare(password, encyptedPassword);
   };
   
-  exports.RandomPasswordFunc = () => {
+exports.RandomPasswordFunc = () => {
     return require("crypto").randomBytes(5).toString("hex");
   };

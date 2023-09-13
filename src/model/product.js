@@ -29,6 +29,11 @@ const Product=Schema({
     storeId:{
         type:Schema.Types.ObjectId,
         ref:"store"
+    },
+    productImg:{
+        type:String,
+        // required:true,
+        default:""
     }
 
 },{

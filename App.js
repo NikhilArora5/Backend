@@ -3,7 +3,7 @@ const fileUpload = require("express-fileupload");
 const app=express()
 
 const cors=require("cors")
-app.use(cors())
+app.use(cors( {origin: "*",credentials: true,}))
 const connectDB=require("./config/database")
 const cookieParser = require("cookie-parser");
 const PORT=8081

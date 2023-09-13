@@ -43,7 +43,7 @@ const register=async(req,res)=>{
 
     // let token=await genToken(userSaved._id)
 
-    if(userSaved && token){
+    if(userSaved ){
         console.log("user saved")
         return res.status(200).json({
             status:200,
@@ -56,7 +56,7 @@ const register=async(req,res)=>{
         return res.status(400).json({
             status:400,
             message:error.message,
-            data:userSaved
+            data:{}
         })
     }
 
@@ -96,6 +96,7 @@ const login=async(req,res)=>{
 
  try {
     let {email,password}=req.body
+    console.log("body",req.body)
     
     if(!email || !password){
         return res.status(400).json({
@@ -122,7 +123,7 @@ const login=async(req,res)=>{
 
 
     let isPassTrue=await ComparePasswordFunc(password,userExist.password)
-    
+    console.log("pass correct",isPassTrue)
     let token=await genToken(userExist._id)
 
     userExist.password=""
