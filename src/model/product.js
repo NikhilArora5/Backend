@@ -21,6 +21,10 @@ const Product=Schema({
         type:Boolean,
         default:false
     },
+    isDeleted:{
+        type:Boolean,
+        default:false
+    },
     desc:{
         type:String,
         // required:true,

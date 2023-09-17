@@ -29,7 +29,11 @@ const client=mongoose.Schema({
             ref:"store"
         }
     }
-    ]
+    ],
+    isDeleted:{
+        type:Boolean,
+        default:false
+    },
 },{
 
     timestamps:true

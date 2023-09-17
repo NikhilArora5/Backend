@@ -167,7 +167,8 @@ const logout=async(req,res)=>{
     res.clearCookie("token")
     .status(200).json({
         message:"user logout successful",
-        data:{}
+        data:{},
+        status:200
     })
 }
 
