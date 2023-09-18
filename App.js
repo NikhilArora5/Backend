@@ -1,5 +1,7 @@
 const express=require("express")
 const fileUpload = require("express-fileupload");
+var morgan = require('morgan')
+
 const app=express()
 
 const cors=require("cors")
@@ -9,7 +11,11 @@ const cookieParser = require("cookie-parser");
 const PORT=8081
 require('dotenv').config();
 connectDB()
-
+morgan.token('id', function getId (req) {
+  return req.id
+})
+app.use(morgan(':id :method :url :response-time :status'))
+ 
 app.use(
     fileUpload({
       useTempFiles: true,
@@ -18,6 +24,8 @@ app.use(
     })
   );
 
+  
+  
 // for req,body
 app.use(express.json());
 // for req.body url-form-encoded
