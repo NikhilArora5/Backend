@@ -1,14 +1,17 @@
 const express=require("express")
-
 const router=express.Router()
+const {razorPay_instance}=require("../../utils/payment")
+
+
 
 
 
 const createOrder=async(req,res)=>{
+  try {
     let amount=req.body.amount
-    console.log("body",req.body)
+    console.log("---body-----------",req.body)
 
-var instance = new Razorpay({ key_id: 'rzp_test_91ew5wicy4mmG4', key_secret: 'Dm8eBOlU2yKXSAYdfLOYTjiI' })
+
 
 const options={
     amount: amount*100,
@@ -18,7 +21,7 @@ const options={
   }
 
 
-const myOrder= await instance.orders.create(options)
+const myOrder= await razorPay_instance.orders.create(options)
 
 if(myOrder){
 
@@ -35,7 +38,13 @@ else{
         message:"order failed"
     })
 }
+    
+  } catch (error) {
+    console.log("----ERORRR",error.message)
+  }
 
 }
 
-router.post("order",createOrder)
+router.post("/order",createOrder)
+
+module.exports=router

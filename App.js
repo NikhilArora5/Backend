@@ -37,11 +37,13 @@ app.use(cookieParser());
 const userRouter=require("./src/modules/users/index")
 const clientRouter=require("./src/modules/client/index")
 const storeRouter=require("./src/modules/store/index")
+const userOrders=require("./src/modules/orders/index")
 
 
 app.use("/user/",userRouter)
 app.use("/client/",clientRouter)
 app.use("/store/",storeRouter)
+app.use("/orders/",userOrders)
 
 app.listen(PORT,(err)=>{
     if(err){
