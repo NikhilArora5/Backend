@@ -45,6 +45,10 @@ app.use("/client/",clientRouter)
 app.use("/store/",storeRouter)
 app.use("/orders/",userOrders)
 
+app.get("/",(req,res)=>{
+  res.send("Hello Deployed")
+})
+
 app.listen(PORT,(err)=>{
     if(err){
         console.log("server error")

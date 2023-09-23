@@ -65,7 +65,8 @@ const transactionCheck = async (req, res) => {
     //   process.env.RAZORPAY_SECRET
     // );
 
-    const body = razorPay_id + "|" + razorpay_payment_id;
+    // const body = razorPay_id + "|" + razorpay_payment_id;
+    const body = orderId + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_SECRET)
@@ -97,12 +98,19 @@ const transactionCheck = async (req, res) => {
         res.redirect(
           `http://localhost:1234/paymentsuccess?reference=${razorpay_payment_id}`
         );
+      }else{
+        res.redirect(
+            `http://localhost:1234/paymentFailed"`
+          );
       }
     }
 
     
   } catch (error) {
     console.log("-----------error", error.message);
+    res.redirect(
+        `http://localhost:1234/paymentFailed"`
+      );
     return res.status(200).json({
       status: 200,
       message: error.message,
