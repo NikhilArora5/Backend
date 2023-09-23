@@ -5,7 +5,7 @@ var morgan = require('morgan')
 const app=express()
 
 const cors=require("cors")
-app.use(cors( {origin: "*",credentials: true,}))
+app.use(cors( ))
 const connectDB=require("./config/database")
 const cookieParser = require("cookie-parser");
 const PORT=8081
