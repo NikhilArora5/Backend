@@ -65,8 +65,8 @@ const transactionCheck = async (req, res) => {
     //   process.env.RAZORPAY_SECRET
     // );
 
-    // const body = razorPay_id + "|" + razorpay_payment_id;
-    const body = orderId + "|" + razorpay_payment_id;
+    const body = razorPay_id + "|" + razorpay_payment_id;
+    // const body = orderId + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_SECRET)
