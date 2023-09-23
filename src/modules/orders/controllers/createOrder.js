@@ -96,11 +96,11 @@ const transactionCheck = async (req, res) => {
       // console.log("----update---------", updateOrder.transaction.success);
       if (updateOrder.transaction.success) {
         res.redirect(
-          `http://localhost:1234/paymentsuccess?reference=${razorpay_payment_id}`
+          `https://foodcafeclient.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`
         );
       }else{
         res.redirect(
-            `http://localhost:1234/paymentFailed"`
+            `https://foodcafeclient.netlify.app/paymentFailed`
           );
       }
     }
@@ -109,7 +109,7 @@ const transactionCheck = async (req, res) => {
   } catch (error) {
     console.log("-----------error", error.message);
     res.redirect(
-        `http://localhost:1234/paymentFailed"`
+      `https://foodcafeclient.netlify.app/paymentFailed`
       );
     return res.status(200).json({
       status: 200,
