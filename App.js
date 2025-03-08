@@ -10,7 +10,7 @@ const connectDB=require("./config/database")
 const cookieParser = require("cookie-parser");
 const PORT=8081
 require('dotenv').config();
-connectDB()
+// connectDB()
 morgan.token('id', function getId (req) {
   return req.id
 })
