@@ -8,7 +8,7 @@ const cors=require("cors")
 app.use(cors( ))
 const connectDB=require("./config/database")
 const cookieParser = require("cookie-parser");
-const PORT=80
+const PORT=8001
 require('dotenv').config();
 // connectDB()
 morgan.token('id', function getId (req) {
